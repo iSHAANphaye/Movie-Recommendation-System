@@ -1,10 +1,39 @@
 # Run command: streamlit run "C:\Users\ishaan phaye\Desktop\VS Code\Movie Recommendation System\webapp.py"
-from github import Github
 import streamlit as st
 import pickle
 import pandas as pd
 import requests
 
+st.set_page_config(layout="wide")
+
+video_html = """
+		<style>
+
+		#myVideo {
+		  position: fixed;
+		  right: 0;
+		  bottom: 0;
+		  min-width: 100%; 
+		  min-height: 100%;
+		}
+
+		.content {
+		  position: fixed;
+		  bottom: 0;
+		  background: rgba(0, 0, 0, 0.5);
+		  color: #f1f1f1;
+		  width: 100%;
+		  padding: 20px;
+		}
+
+		</style>	
+		<video autoplay muted loop id="myVideo">
+		  <source src="https://static.streamlit.io/examples/star.mp4")>
+		  Your browser does not support HTML5 video.
+		</video>
+        """
+
+st.markdown(video_html, unsafe_allow_html=True)
 def fetch_poster(movie_id):
     response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=22ba71e47d71616603bac3fb3940cb81&language=en-US'.format(movie_id))
     data = response.json()
@@ -25,14 +54,10 @@ def recommend(movie):
         recommended_movies_poster.append(fetch_poster(movie_id))
     return recommended_movies,recommended_movies_poster
 
-g = Github("<Access Token>")
-repo = g.get_user().get_repo("Movie-Recommendation-System")
-movies_dict = repo.get_contents("moviesDict.pkl")
-# movies_dict=pickle.load(open(r'C:\Users\ishaan phaye\Desktop\VS Code\ML Projects\moviesDict.pkl','rb'))
+movies_dict=pickle.load(open(r'C:\Users\ishaan phaye\Desktop\VS Code\Movie Recommendation System\moviesDict.pkl','rb'))
 movies=pd.DataFrame(movies_dict)
 
-similarity = repo.get_contents("movies.pkl")
-# similarity=pickle.load(open(r'C:\Users\ishaan phaye\Desktop\VS Code\ML Projects\similarity.pkl','rb'))
+similarity=pickle.load(open(r'C:\Users\ishaan phaye\Desktop\VS Code\Movie Recommendation System\similarity.pkl','rb'))
 
 st.title('Movie Recommendation System!!')
 
