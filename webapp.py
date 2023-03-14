@@ -31,7 +31,7 @@ movies_dict = repo.get_contents("moviesDict.pkl")
 # movies_dict=pickle.load(open(r'C:\Users\ishaan phaye\Desktop\VS Code\ML Projects\moviesDict.pkl','rb'))
 movies=pd.DataFrame(movies_dict)
 
-similarity_pickle = repo.get_contents("movies.pkl")
+similarity = repo.get_contents("movies.pkl")
 # similarity=pickle.load(open(r'C:\Users\ishaan phaye\Desktop\VS Code\ML Projects\similarity.pkl','rb'))
 
 st.title('Movie Recommendation System!!')
