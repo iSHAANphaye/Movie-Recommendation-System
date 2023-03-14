@@ -1,5 +1,5 @@
 # Run command: streamlit run "c:\Users\ishaan phaye\Desktop\VS Code\ML Projects\webapp.py"
-from github import Github
+# from github import Github
 import streamlit as st
 import pickle
 import pandas as pd
@@ -25,14 +25,14 @@ def recommend(movie):
         recommended_movies_poster.append(fetch_poster(movie_id))
     return recommended_movies,recommended_movies_poster
 
-g = Github("<Access Token>")
-repo = g.get_user("iSHAANphaye").get_repo("Movie-Recommendation-System")
-movies_dict = repo.get_contents("moviesDict.pkl")
-# movies_dict=pickle.load(open(r'C:\Users\ishaan phaye\Desktop\VS Code\ML Projects\moviesDict.pkl','rb'))
+# g = Github("<Access Token>")
+# repo = g.get_user("iSHAANphaye").get_repo("Movie-Recommendation-System")
+# movies_dict = repo.get_contents("moviesDict.pkl")
+movies_dict=pickle.load(open(r'C:\Users\ishaan phaye\Desktop\VS Code\ML Projects\moviesDict.pkl','rb'))
 movies=pd.DataFrame(movies_dict)
 
 similarity_pickle = repo.get_contents("movies.pkl")
-# similarity=pickle.load(open(r'C:\Users\ishaan phaye\Desktop\VS Code\ML Projects\similarity.pkl','rb'))
+similarity=pickle.load(open(r'C:\Users\ishaan phaye\Desktop\VS Code\ML Projects\similarity.pkl','rb'))
 
 st.title('Movie Recommendation System!!')
 
