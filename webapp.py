@@ -1,4 +1,4 @@
-# Run command: streamlit run "c:\Users\ishaan phaye\Desktop\VS Code\ML Projects\webapp.py"
+# Run command: streamlit run "C:\Users\ishaan phaye\Desktop\VS Code\Movie Recommendation System\webapp.py"
 from github import Github
 import streamlit as st
 import pickle
